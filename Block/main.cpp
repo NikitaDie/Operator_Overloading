@@ -7,10 +7,10 @@
 int main()
 {
 
-    Block a; // по умолчанию
+    Block a; // default
     Block b{ 4, new int[4]{0, 1, 2, 3}}; //my ctor
-    Block c{ Block{ 4, new int[4]{0, 1, 2, 3} } }; // move_ctor
-    Block d{ b };
+    Block c{ Block{ 4, new int[4]{0, 1, 2, 3} } }; // move ctor
+    Block d{ b }; //copy ctor
 
     Block e = Block{ 4, new int[4]{0, 1, 2, 3} }; // оператор присваивания переносом
 
@@ -19,7 +19,9 @@ int main()
     std::cout << b - 0;
     std::cout << b - d;
     std::cout << b * 2;
-
+    std::cout << c * b;
+    std::cout << c / 2;
+    std::cout << c / 3;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

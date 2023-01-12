@@ -204,9 +204,9 @@ Block& Block::operator*(const int index) //proved (multiplies each element of th
 	return *this;
 }
 
-Block& Block::operator*(const Block& block)
+Block& Block::operator*(const Block& block) //proved (multiplies each element of the array by an element from other array, copy the difference from the biggest)
 {
-	if (this->count > block.count) {
+	if (this->count >= block.count) {
 		for (int i{ 0 }; i < block.count; ++i) {
 			this->arr[i] *= block.arr[i];
 		}
@@ -217,7 +217,7 @@ Block& Block::operator*(const Block& block)
 		}
 
 		int* tmp_arr{ new int[this->size] };
-		for (int i{ 0 }; i < this->count; ++i) {
+		for (int i{ 0 }; i < this->size; ++i) {
 			tmp_arr[i] = this->arr[i] * block.arr[i];
 		}
 
@@ -228,14 +228,14 @@ Block& Block::operator*(const Block& block)
 		delete[] this->arr;
 
 		this->arr = tmp_arr;
-
+		this->count = this->size;
 	}
 	
 	return *this;
 
 }
 
-Block& Block::operator/(const int index) //?
+Block& Block::operator/(const int index) //proved (multiplies each element of the array by an element, integer division)
 {
 	for (int i{ 0 }; i < this->count; ++i) {
 		this->arr[i] /= index;
