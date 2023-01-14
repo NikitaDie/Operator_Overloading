@@ -30,7 +30,7 @@ public:
 
 	void pushBack(const int element);
 
-	void popBack(); //--
+	void popBack();
 
 	void insert(const int element, const int id);
 
@@ -50,7 +50,13 @@ public:
 
 	Block& operator/(const int index);
 
+	Block& operator--();
+
+	Block operator--(int);
+
 	int& operator[](const int id);
+
+	const int& operator[](const int id) const;
 
 	friend std::ostream& operator<< (std::ostream& out, const Block& block);
 

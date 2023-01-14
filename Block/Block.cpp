@@ -50,6 +50,9 @@ Block& Block::operator=(const Block& block)
 
 Block& Block::operator=(Block&& block)
 {
+
+	delete[] this->arr;
+
 	this->size = block.size;
 	this->count = block.count;
 	this->arr = block.arr;
@@ -243,7 +246,25 @@ Block& Block::operator/(const int index) //proved (multiplies each element of th
 	return *this;
 }
 
+Block& Block::operator--() //prefix
+{
+	popBack();
+	return *this;
+}
+
+Block Block::operator--(int) //postfix
+{
+	Block temp{ *this };
+	--(*this);
+	return temp;
+}
+
 int& Block::operator[](const int id) //add also const version
+{
+	return this->arr[id];
+}
+
+const int& Block::operator[](const int id) const
 {
 	return this->arr[id];
 }
