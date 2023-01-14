@@ -271,6 +271,11 @@ const int& Block::operator[](const int id) const
 
 std::ostream& operator<<(std::ostream& out, const Block& block) //proved
 {
+
+	if (block.arr == nullptr) {
+		return out;
+	}
+
 	for (int i{ 0 }; i < block.count - 1; ++i) {
 		out << block.arr[i] << ", ";
 	}
